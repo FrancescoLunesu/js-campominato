@@ -1,8 +1,8 @@
 // Il computer deve generare 16 numeri casuali tra 1 e 100. || FATTO
 // I numeri non possono essere duplicati || FATTO
-// In seguito deve chiedere all'utente (100 - 16)
-// volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L’utente non può inserire più volte lo stesso numero.
+// In seguito deve chiedere all'utente (100 - 16) ||
+// volte di inserire un numero alla volta, sempre compreso tra 1 e 100. || FATTO
+// L’utente non può inserire più volte lo stesso numero. || FATTO
 // Se il numero è presente nella lista dei numeri generati, la partita termina,
 //  altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero “vietato”
@@ -20,7 +20,7 @@
 // inserisco tutto dentro a un array
 // I numeri non possono essere duplicati
 var numeriCas = [];
-var numeroUtente;
+var numeriUtente = [];
 
 for (var i = 0; i<16; i++){
     var numgen = Math.floor(Math.random()*100)+1;
@@ -30,3 +30,21 @@ for (var i = 0; i<16; i++){
 }
 
 console.log(numeriCas);
+
+// In seguito deve chiedere all'utente (100 - 16)
+// volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+// L’utente non può inserire più volte lo stesso numero.
+for (var i = 0; i < 10; i++){
+    var utente = parseInt(prompt("Inserisci un numero:"));
+    if (utente != numeriUtente){
+        numeriUtente.push(utente);
+    } else {
+        alert("ATTENZIONE, il numero è già stato inserito");
+        i--;
+    }
+}
+
+console.log(numeriUtente);
+
+// Se il numero è presente nella lista dei numeri generati, la partita termina,
+//  altrimenti si continua chiedendo all'utente un altro numero.

@@ -20,9 +20,24 @@
 // inserisco tutto dentro a un array
 // I numeri non possono essere duplicati
 var numeriCas = [];
-var massimo = 100;
-var chance = massimo - 16;
 var bomba = false;
+
+// Il giocatore può scegliere il livello di gioco tra facile, medio o difficile. In base alla sua scelta la variabile "scelta" avrà un determinato valore. Utilizzando lo switch diamo un valore alla variabile "massimo" (50 se facile, 80 se medio e 100 se difficile). Come valore di default nello switch ho impostato 100 (difficile)
+var scelta = prompt("Scegli il livello di gioco: facile, medio o difficile");
+switch(scelta){
+    case "facile":
+    var massimo = 50;
+    break;
+    case "medio":
+    var massimo = 80;
+    break;
+    case "difficile":
+    var massimo = 100;
+    default:
+    var massimo = 50;
+}
+
+var chance = massimo - 16;
 
 while (numeriCas.length < 16){
     var numero = randomGen(1, 100);
@@ -39,11 +54,8 @@ console.log(numeriCas);
 
 var numeriUtente = [];
 
-// dichiaro una variabile J (che rappresenta il punteggio del giocatore) da incrementare di +1 ad ogni giro del ciclo while e che viene stampata quando il gioco si interrompe e il giocatore perde
-var j = 0;
 while (numeriUtente.length < chance && bomba == false){
     var numUtente = parseInt(prompt("Inserisci un numero:"));
-
     // Se il numero è presente nella lista dei numeri generati, la partita termina,
     //  altrimenti si continua chiedendo all'utente un altro numero.
 
@@ -51,32 +63,29 @@ while (numeriUtente.length < chance && bomba == false){
 
     if(check(numeriCas, numUtente)){
         bomba = true;
-    // se la variabile bomba è true, la partita si interrompe (esce fuori dal ciclo while) e comunica al giocatore il punteggio (variabile J)
+    // se la variabile bomba è true, la partita si interrompe (esce fuori dal ciclo while) e comunica al giocatore il punteggio (lunghezza array numeriUtente)
         if (bomba == true) {
-            alert("Hai perso! Il tuo punteggio è:" + " " + j);
+            alert("Hai perso! Il tuo punteggio è:" + " " + numeriUtente.length);
         }
     }
 
     // utilizzo la funzione check per controllare che l'utente non inserisca lo stesso numero più volte. Se il numero non è stato già inserito, viene aggiunto all'array numeriUtente[], altrimenti compare un alert che avvisa l'utente che è già stato inserito
-    if(check(numeriUtente, numUtente) == false){
+
+    if(numUtente < 0 || numUtente > 100){
+         alert("Attenzione. Il numero inserito dev'essere tra 1 e 100. Inserisci di nuovo il numero:")
+    } else if(check(numeriUtente, numUtente) == false){
         numeriUtente.push(numUtente);
     } else {
         alert("ATTENZIONE hai già inserito questo numero, inseriscine uno diverso:");
     }
 
-    j++;
-
     if(numeriUtente.length == chance && bomba == false){
-        alert("COMPLIMENTI!! HAI VINTO!!!");
+        alert("COMPLIMENTI!! HAI VINTO!!! Il tuo punteggio è:" + " " + numeriUtente.length);
     }
+
 }
 
 console.log(numeriUtente);
-
-
-
-
-
 
 
 // var possibilita = massimo - numeriCas.length;
@@ -123,6 +132,11 @@ function check(array, num){
     return false;
 }
 
+// function verNum (number){
+//     if(number < 0 || number > 100){
+//         return alert("Attenzione. Il numero inserito dev'essere tra 1 e 100. Inserisci di nuovo il numero:")
+//     }
+// }
 
 //
 // var numeriUtente = [];

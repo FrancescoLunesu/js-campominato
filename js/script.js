@@ -39,6 +39,8 @@ switch(scelta){
 
 var chance = massimo - 16;
 
+// Il programma genera dei numeri casuali utilizzando la funzione check per verificare che non vengano generati
+
 while (numeriCas.length < 16){
     var numero = randomGen(1, 100);
     if(check(numeriCas,numero) == false){
@@ -88,31 +90,6 @@ while (numeriUtente.length < chance && bomba == false){
 console.log(numeriUtente);
 
 
-// var possibilita = massimo - numeriCas.length;
-// var numeriUtente = [];
-//
-// while (numeriUtente.length < 10){
-//     var number = parseInt(prompt("Inserisci un numero:"));
-//     if(check(numeriCas,numero) == false){
-//     numeriUtente.push(number);
-// } else {
-//     alert("ATTENZIONE hai già inserito questo numero, inseriscine uno diverso:");
-// }
-// }
-//
-// console.log(numeriUtente);
-
-
-
-
-//
-// if (trovato){
-//     alert("hai vinto!")
-// } else{
-//     alert("hai perso!")
-// }
-
-
 // *** FUNZIONI ***
 
 // funzione per generare numeri random
@@ -131,36 +108,3 @@ function check(array, num){
     }
     return false;
 }
-
-// function verNum (number){
-//     if(number < 0 || number > 100){
-//         return alert("Attenzione. Il numero inserito dev'essere tra 1 e 100. Inserisci di nuovo il numero:")
-//     }
-// }
-
-//
-// var numeriUtente = [];
-//
-// for (var i = 0; i<16; i++){
-//     var numgen = Math.floor(Math.random()*100)+1;
-//     if(numgen != numeriCas){
-//         numeriCas.push(numgen);
-//     }
-// }
-//
-// console.log(numeriCas);
-//
-// // In seguito deve chiedere all'utente (100 - 16)
-// // volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// // L’utente non può inserire più volte lo stesso numero.
-// for (var i = 0; i < 10; i++){
-//     var utente = parseInt(prompt("Inserisci un numero:"));
-//     if (utente != numeriUtente){
-//         numeriUtente.push(utente);
-//     } else {
-//         alert("ATTENZIONE, il numero è già stato inserito");
-//         i--;
-//     }
-// }
-//
-// console.log(numeriUtente);
